@@ -2,24 +2,24 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { useEffect, useState } from 'react';
 import { Image } from 'react-native';
+import axios from 'axios';
 export default function App() {
   const [data, setData] = useState([])
 
   const getData = async()=>{
-    const url = 'https: api-football-v1.p.rapidapi.com/v3/leagues';
+
     const options = {
       method: 'GET',
+      url: 'https://api-football-v1.p.rapidapi.com/v3/leagues',
       headers: {
         'X-RapidAPI-Key': 'a44ca3f124mshf5256df877ee8a2p16ed0djsn312ab59cbb57',
         'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
       }
     };
-
+    
     try {
-      const response = await fetch(url, options);
-      const result = await response.text();
-      setData(JSON.parse(result))
-        console.log(result);
+      const response = await axios.request(options);
+      console.log(response.data);
     } catch (error) {
       console.error(error);
     }
