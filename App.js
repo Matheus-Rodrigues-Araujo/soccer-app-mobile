@@ -1,21 +1,46 @@
 import { StyleSheet, Text, View, Button , ScrollView } from 'react-native';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { TextInput } from 'react-native';
 import { Pressable } from 'react-native';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [text, setText] = useState('value')
   const [value, onChangeText] = useState('');
+  const [fontsLoaded] = useFonts({
+    'Nunito': require('./assets/fonts/Nunito.ttf'),
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
 
     return(
       <View style={styles.container} >
-        <View style={{padding: 10,}}>
-          <Text style={{color: 'white', textAlign: 'center', fontWeight: 900, fontSize: 25, padding: 10}} >
+        <View style={{padding: 15, display: 'flex', flexDirection: 'row', alignContent: 'center', justifyContent:'space-between', padding: 10,  borderWidth:2,borderBottomColor: '#7ED957'}}>
+          <Text style={{color: '#7ED957', fontWeight: 900, fontSize: 20, padding: 10}} >
             Soccer News
           </Text>
+        
+          <View style={{padding: 15, display: 'flex', flexDirection: 'row', alignContent: 'center', padding: 10}}>
+            <Text
+            style={{color: 'white', padding: 5}}
+            >Search</Text>
+           </View>
         </View>
+        
 
-        <View style={styles.navbar}>
+        {/* <View style={styles.navbar}>
             <TextInput
               editable
               maxLength={30}
@@ -25,41 +50,15 @@ export default function App() {
               style={styles.input}
             />
 
-            <View style={styles.buttonsContainer} >
-              <Pressable
-                style={styles.button} 
-                backgroundColor='white'
-                onPress={()=> setText('Leagues page')}> 
-                <Text style={styles.buttonText}>Leagues</Text>
-              </Pressable>
-              
-              <Pressable 
-                style={styles.button} 
-                backgroundColor='white'
-                onPress={()=> setText('Teams page')}
-                
-                >
-                <Text style={styles.buttonText}>Teams</Text>
-              </Pressable>
-              
-              <Pressable 
-                style={styles.button} 
-                backgroundColor='white'
-                onPress={()=> setText('Players')}>
-                <Text style={styles.buttonText}>Players</Text>
-               </Pressable>
+            
+        </View> */}
 
-              <Pressable
-                style={styles.button} 
-                backgroundColor='white'
-                onPress={()=> setText('Matches')}>
-                <Text style={styles.buttonText}>Matches</Text>
-              </Pressable> 
-            </View>
-        </View>
-
-        <View>
-            {text && value && <Text style={{color:'white'}} > {text + ' '+value} </Text>}
+        <View style={{padding: 20, marginTop: 20}} >
+            
+            <Text style={{fontWeight: 800, color: '#7ED957', fontSize: 52, textAlign: 'center'}} >SoccerNews</Text>
+            <Text style={{fontWeight: 600, color: 'white', fontSize: 20, textAlign:'justify', padding: 18}} >"Unleash your soccer passion with our app - where every kick counts!"</Text>
+            {/* OBS: Soccer ball image here */}
+           
         </View>
 
       </View>
@@ -71,10 +70,8 @@ const styles = StyleSheet.create({
     overflow: 'scroll',
     flex: 1,
     display: 'flex',
-    flexDirection: 'column',
-    paddingTop: 30,
+    borderWidth: 2,
     backgroundColor: 'black',
-    padding:10,
   },
   navbar:{
     padding:10,
@@ -111,5 +108,8 @@ const styles = StyleSheet.create({
     borderColor: 'rgb(57, 255, 44)',
     backgroundColor: 'white',
     textDecorationLine:'none'
-  }
+  },
+  text: {
+    fontFamily: 'Nunito',
+  },
 });
