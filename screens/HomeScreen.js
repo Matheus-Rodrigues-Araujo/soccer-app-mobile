@@ -46,23 +46,29 @@ export default function HomeScreen() {
            
         </View>
 
-        <View style={{flex:1, flexDirection: 'row', display: 'flex'}}>
+        <View style={{flex:1, flexDirection: 'row', display: 'flex', justifyContent: 'space-evenly'}}>
 
-          <TouchableOpacity onPress={this._onPressButton} style={styles.buttonsContainer} >
+          <TouchableOpacity onPress={this._onPressButton} >
             <View style={styles.button}>
-              <Text style={styles.buttonText}>TouchableOpacity</Text>
+              <Text style={styles.buttonText}>Home</Text>
             </View>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={this._onPressButton}>
             <View style={styles.button}>
-              <Text style={styles.buttonText}>TouchableOpacity</Text>
+              <Text style={styles.buttonText}>Leagues</Text>
             </View>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={this._onPressButton}>
             <View style={styles.button}>
-              <Text style={styles.buttonText}>TouchableOpacity</Text>
+              <Text style={styles.buttonText}>Players</Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={this._onPressButton}>
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>Matches</Text>
             </View>
           </TouchableOpacity>
 
