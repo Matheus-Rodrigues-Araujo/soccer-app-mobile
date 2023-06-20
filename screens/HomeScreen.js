@@ -5,14 +5,14 @@ import { Pressable, TouchableOpacity } from 'react-native';
 
 
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
   const [text, setText] = useState('value')
   const [value, onChangeText] = useState('');
 
 
     return(
       <View style={styles.container} >
-        <View style={{padding: 15, display: 'flex', flexDirection: 'row', alignContent: 'center', justifyContent:'space-between', padding: 10,  borderWidth:2,borderBottomColor: '#7ED957'}}>
+        {/* <View style={{padding: 15, display: 'flex', flexDirection: 'row', alignContent: 'center', justifyContent:'space-between', padding: 10,  borderWidth:2,borderBottomColor: '#7ED957'}}>
           <Text style={{color: '#7ED957', fontWeight: 900, fontSize: 20, padding: 10}} >
             Soccer News
           </Text>
@@ -22,7 +22,7 @@ export default function HomeScreen() {
             style={{color: 'white', padding: 5}}
             >Search</Text>
            </View>
-        </View>
+        </View> */}
         
 
         {/* <View style={styles.navbar}>
@@ -48,25 +48,27 @@ export default function HomeScreen() {
 
         <View style={{flex:1, flexDirection: 'row', display: 'flex', justifyContent: 'space-evenly'}}>
 
-          <TouchableOpacity onPress={this._onPressButton} >
+          <TouchableOpacity onPress={() => navigation.navigate('Home')}
+ >
             <View style={styles.button}>
               <Text style={styles.buttonText}>Home</Text>
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={this._onPressButton}>
+          <TouchableOpacity onPress={() => navigation.navigate('Leagues')}
+          >
             <View style={styles.button}>
               <Text style={styles.buttonText}>Leagues</Text>
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={this._onPressButton}>
+          <TouchableOpacity onPress={() => navigation.navigate('Players')}>
             <View style={styles.button}>
               <Text style={styles.buttonText}>Players</Text>
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={this._onPressButton}>
+          <TouchableOpacity  onPress={() => navigation.navigate('Matches')}>
             <View style={styles.button}>
               <Text style={styles.buttonText}>Matches</Text>
             </View>
@@ -83,9 +85,10 @@ const styles = StyleSheet.create({
   container: {
     overflow: 'scroll',
     flex: 1,
+    // borderTopColor: 'white',
     // display: 'flex',
     justifyContent: 'space-between',
-    borderWidth: 2,
+    borderWidth: 1,
     // flexDirection: 'column',
     backgroundColor: 'black',
   },
