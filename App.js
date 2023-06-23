@@ -14,13 +14,12 @@ const Drawer = createDrawerNavigator()
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home"
-      screenOptions={styles.navigator}>
+      <Drawer.Navigator initialRouteName="Home" screenOptions={styles.navigator}>
         <Drawer.Screen name="Home" component={HomeScreen}
          options={{
             headerTitle: () => (
-                <View  style={{display: 'flex', width: '100%',flexDirection: 'row', alignItems: 'center'q}} >
-                    <Image style={{width: 40, height: 40, marginLeft: '52%'}} source={require("./soccer-ball-logo.png")} />
+                <View  style={{display: 'flex', width: '100%',flexDirection: 'row', alignItems: 'center'}} >
+                    {/*<Image style={{width: 40, height: 40, marginLeft: '52%'}} source={require("./soccer-ball-logo.png")} />*/}
 
                     {/*<Text style={{color: '#7ED959', fontSize: 21}} >APP__V1.0</Text>*/}
                 </View>
@@ -38,11 +37,18 @@ export default function App() {
 const styles = StyleSheet.create({
     navigator: {
         drawerStyle:{backgroundColor: '#044694'},
-        headerStyle:{backgroundColor: '#044694'},
+        headerStyle:{
+            borderBottomWidth: 0,
+            backgroundColor: 'white',
+            borderBottomColor: 'red',
+
+        },
         headerTintColor: '#EE2C2D',
         drawerTintColor: '#EE2C2D',
-        drawerActiveTintColor: '#EE2C2D',
+        drawerActiveTintColor: '#00BF63',
         drawerInactiveTintColor: 'white',
-        overlayColor: '#121415'
+
     }
 })
+
+{/*backgroundColor: '#044694', */}

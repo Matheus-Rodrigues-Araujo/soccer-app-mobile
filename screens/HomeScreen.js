@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Button , ScrollView } from 'react-native';
 import { useEffect, useState, useCallback } from 'react';
 import { TextInput } from 'react-native';
 import { Pressable, TouchableOpacity } from 'react-native';
-
+import Match from '../components/Match';
 
 
 export default function HomeScreen({navigation}) {
@@ -12,36 +12,14 @@ export default function HomeScreen({navigation}) {
 
     return(
       <View style={styles.container} >
-        {/* <View style={{padding: 15, display: 'flex', flexDirection: 'row', alignContent: 'center', justifyContent:'space-between', padding: 10,  borderWidth:2,borderBottomColor: '#7ED957'}}>
-          <Text style={{color: '#7ED957', fontWeight: 900, fontSize: 20, padding: 10}} >
-            Soccer News
-          </Text>
-        
-          <View style={{padding: 15, display: 'flex', flexDirection: 'row', alignContent: 'center', padding: 10}}>
-            <Text
-            style={{color: 'white', padding: 5}}
-            >Search</Text>
-           </View>
-        </View> */}
-        
-
-        {/*<View style={styles.navbar}>
-            <TextInput
-              editable
-              maxLength={30}
-              placeholder='Search...'
-              onChangeText={text => onChangeText(text)}
-              value={value}
-              style={styles.input}
-            />
 
 
-        </View>*/}
 
-        <View style={{flex:10, padding: 20, marginTop: 20, justifyContent: 'flex-start', display: 'flex', marginTop: 50}} >
-            
+        <ScrollView >
+            <Match />
 
-        </View>
+
+        </ScrollView>
 
 
 
@@ -55,6 +33,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     backgroundColor: '#044694',
+    borderColor: '#044694'
   },
   navbar:{
     padding:10,
