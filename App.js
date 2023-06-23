@@ -1,31 +1,48 @@
-// import { } from 'react-native';
-// import { useEffect, useState, useCallback } from 'react';
-import { Text, View } from 'react-native';
-// import { Pressable, TouchableOpacity } from 'react-native';
+import * as React from 'react';
+import { Text, View, StyleSheet, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
+
 import HomeScreen from './screens/HomeScreen';
 import LeaguesScreen from './screens/LeaguesScreen';
 import PlayersScreen from './screens/PlayersScreen';
 import MatchesScreen from './screens/MatchesScreen';
 
-const Stack = createNativeStackNavigator()
+const Drawer = createDrawerNavigator()
 
 export default function App() {
-  // const [text, setText] = useState('value')
-  // const [value, onChangeText] = useState('');
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Home"
+      screenOptions={styles.navigator}>
+        <Drawer.Screen name="Home" component={HomeScreen}
+         options={{
+            headerTitle: () => (
+                <View  style={{display: 'flex', width: '100%',flexDirection: 'row', alignItems: 'center'q}} >
+                    <Image style={{width: 40, height: 40, marginLeft: '52%'}} source={require("./soccer-ball-logo.png")} />
 
-
-    return(
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName='Home' >
-          <Stack.Screen name='Home' component={HomeScreen} options={{title: 'Home', headerShown: true, headerStyle:{backgroundColor: 'black'}, headerTintColor: '#7ED957'}} />
-          <Stack.Screen name='Leagues' component={LeaguesScreen} options={{title: 'Leagues', headerShown: true, headerStyle:{backgroundColor: 'black'}, headerTintColor: '#7ED957'}}/>
-          <Stack.Screen name='Players' component={PlayersScreen} options={{title: 'Players', headerShown: true, headerStyle:{backgroundColor: 'black'}, headerTintColor: '#7ED957'}}/>
-          <Stack.Screen name='Matches' component={MatchesScreen} options={{title: 'Matches', headerShown: true, headerStyle:{backgroundColor: 'black'}, headerTintColor: '#7ED957'}}/>
-        </Stack.Navigator>
-
-      </NavigationContainer>
-    )
+                    {/*<Text style={{color: '#7ED959', fontSize: 21}} >APP__V1.0</Text>*/}
+                </View>
+            )
+         }}
+         />
+        <Drawer.Screen name="Leagues" component={LeaguesScreen} />
+        <Drawer.Screen name="Players" component={PlayersScreen} />
+        <Drawer.Screen name="Matches" component={MatchesScreen} />
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
 }
 
+const styles = StyleSheet.create({
+    navigator: {
+        drawerStyle:{backgroundColor: '#044694'},
+        headerStyle:{backgroundColor: '#044694'},
+        headerTintColor: '#EE2C2D',
+        drawerTintColor: '#EE2C2D',
+        drawerActiveTintColor: '#EE2C2D',
+        drawerInactiveTintColor: 'white',
+        overlayColor: '#121415'
+    }
+})

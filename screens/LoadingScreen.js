@@ -16,14 +16,14 @@ export default function HomeScreen({navigation}) {
           <Text style={{color: '#7ED957', fontWeight: 900, fontSize: 20, padding: 10}} >
             Soccer News
           </Text>
-        
+
           <View style={{padding: 15, display: 'flex', flexDirection: 'row', alignContent: 'center', padding: 10}}>
             <Text
             style={{color: 'white', padding: 5}}
             >Search</Text>
            </View>
         </View> */}
-        
+
 
         {/*<View style={styles.navbar}>
             <TextInput
@@ -39,7 +39,10 @@ export default function HomeScreen({navigation}) {
         </View>*/}
 
         <View style={{flex:10, padding: 20, marginTop: 20, justifyContent: 'flex-start', display: 'flex', marginTop: 50}} >
-            
+
+            <Text style={{fontWeight: 800, color: 'white', fontSize: 52, textAlign: 'center'}} >SoccerNews</Text>
+            <Text style={{fontWeight: 600, color: 'white', fontSize: 20, textAlign:'justify', padding: 18}} >"Unleash your soccer passion with our app - where every kick counts!"</Text>
+            {/* OBS: Soccer ball image here */}
 
         </View>
 
