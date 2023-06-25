@@ -1,22 +1,22 @@
 import { StyleSheet, Text, View, Button, Image} from 'react-native';
 
-export default function Match({data}){
+export default function LiveMatch(){
     return (
         <View style={match.container} >
             <Text style={match.text} >Live</Text>
             <View style={match.teams} >
                 <View style={match.shield} >
-                    <Image style={{width: 80, height: 80}} source={require("../arsenal-logo.png")} />
-                    <Text style={{color: 'black', fontSize: 16}} >{data.team1}</Text>
+                    <Image style={{width: 80, height: 80}} source={require("../images/arsenal-logo.png")} />
+                    <Text style={{color: 'black', fontSize: 16}} >Arsenal</Text>
                 </View>
 
                 <View style={match.score} >
-                   <Text style={match.scoreText} > {data.score} </Text>
+                   <Text style={match.scoreText} > 1 - 3</Text>
                 </View>
 
                 <View style={match.shield} >
-                    <Image style={{width: 80, height: 80}} source={require("../chelsea-logo.png")} />
-                      <Text style={{color: 'black', fontSize: 16}} >{data.team2}</Text>
+                    <Image style={{width: 80, height: 80}} source={require("../images/chelsea-logo.png")} />
+                      <Text style={{color: 'black', fontSize: 16}} >Chelsea</Text>
                 </View>
             </View>
         </View>

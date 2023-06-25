@@ -36,7 +36,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
     navigator: {
-        drawerStyle:{backgroundColor: '#044694'},
+        drawerStyle:{backgroundColor: 'white'},
         headerStyle:{
             borderBottomWidth: 0,
             backgroundColor: 'white',
@@ -45,8 +45,8 @@ const styles = StyleSheet.create({
         },
         headerTintColor: '#EE2C2D',
         drawerTintColor: '#EE2C2D',
-        drawerActiveTintColor: '#00BF63',
-        drawerInactiveTintColor: 'white',
+        drawerActiveTintColor: '#044694',
+        drawerInactiveTintColor: 'black',
 
     }
 })

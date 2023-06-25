@@ -2,8 +2,8 @@ import { StyleSheet, Text, View, Button , ScrollView } from 'react-native';
 import { useEffect, useState, useCallback } from 'react';
 import { TextInput } from 'react-native';
 import { Pressable, TouchableOpacity } from 'react-native';
-import Match from '../components/Match';
-
+import LiveMatch from '../components/LiveMatch';
+import News from '../components/News';
 
 export default function HomeScreen({navigation}) {
   const [text, setText] = useState('value')
@@ -16,7 +16,9 @@ export default function HomeScreen({navigation}) {
 
 
         <ScrollView >
-            <Match />
+            <LiveMatch />
+            <News />
+
 
 
         </ScrollView>
