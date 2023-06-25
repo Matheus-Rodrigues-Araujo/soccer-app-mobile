@@ -13,17 +13,10 @@ export default function HomeScreen({navigation}) {
     return(
       <View style={styles.container} >
 
-
-
         <ScrollView >
             <LiveMatch />
             <News />
-
-
-
         </ScrollView>
-
-
 
       </View>
     )
@@ -34,7 +27,7 @@ const styles = StyleSheet.create({
     overflow: 'scroll',
     flex: 1,
     justifyContent: 'space-between',
-    backgroundColor: '#292929',
+    backgroundColor: '#0B0B0B',
     borderColor: '#044694'
   },
   navbar:{
