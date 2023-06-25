@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, Image, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-
+// Screens
 import HomeScreen from './screens/HomeScreen';
 import LeaguesScreen from './screens/LeaguesScreen';
 import PlayersScreen from './screens/PlayersScreen';
@@ -20,9 +20,6 @@ export default function App() {
             headerTitle: () => (
                 <View  style={{display: 'flex', width: '100%',flexDirection: 'row', alignItems: 'center'}} >
                   <StatusBar barStyle="light-content" backgroundColor="black" />
-
-                    {/* <Image style={{width: 40, height: 40, marginLeft: '52%'}} source={require("./soccer-ball-logo.png")} /> */}
-
                 </View>
             )
          }}
