@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     overflow: 'scroll',
     flex: 1,
     justifyContent: 'space-between',
-    backgroundColor: '#044694',
+    backgroundColor: '#292929',
     borderColor: '#044694'
   },
   navbar:{

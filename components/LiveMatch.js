@@ -7,7 +7,7 @@ export default function LiveMatch(){
             <View style={match.teams} >
                 <View style={match.shield} >
                     <Image style={{width: 80, height: 80}} source={require("../images/arsenal-logo.png")} />
-                    <Text style={{color: 'black', fontSize: 16}} >Arsenal</Text>
+                    <Text style={{color: 'white', fontSize: 16}} >Arsenal</Text>
                 </View>
 
                 <View style={match.score} >
@@ -16,7 +16,7 @@ export default function LiveMatch(){
 
                 <View style={match.shield} >
                     <Image style={{width: 80, height: 80}} source={require("../images/chelsea-logo.png")} />
-                      <Text style={{color: 'black', fontSize: 16}} >Chelsea</Text>
+                      <Text style={{color: 'white', fontSize: 16}} >Chelsea</Text>
                 </View>
             </View>
         </View>
@@ -25,7 +25,7 @@ export default function LiveMatch(){
 
 const match = StyleSheet.create({
     container: {
-        backgroundColor: 'white',
+        backgroundColor: '#474849',
         margin: 20,
         display: 'flex',
         flexDirection: 'column',
@@ -35,7 +35,7 @@ const match = StyleSheet.create({
     text:{
         color: 'white',
         fontWeight: 600,
-        backgroundColor: '#00BF63',
+        backgroundColor: 'black',
         width: '100%',
         fontSize: 20,
         textAlign: 'center',
@@ -58,8 +58,8 @@ const match = StyleSheet.create({
     justifyContent: 'space-around'
     },
     scoreText: {
-        color: 'black',
+        color: 'white',
         fontSize: 20,
-        fontWeight:700
+        fontWeight:800
     }
 })

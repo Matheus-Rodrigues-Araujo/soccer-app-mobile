@@ -23,8 +23,6 @@ export default function News(){
                 ))
               }
 
-
-
             </View>
         </View>
     )
@@ -32,7 +30,7 @@ export default function News(){
 
 const news = StyleSheet.create({
     container: {
-        backgroundColor: 'white',
+        backgroundColor: '#474849',
         margin: 20,
         display: 'flex',
         flexDirection: 'column',
@@ -42,16 +40,17 @@ const news = StyleSheet.create({
     text:{
         color: 'white',
         fontWeight: 600,
-        backgroundColor: '#00BF63',
+        backgroundColor: 'black',
         width: '100%',
         fontSize: 20,
         textAlign: 'center',
-        padding: 2
+        padding: 2,
+        marginBottom: 10
     },
     contents: {
         display: 'flex',
         flexDirection: 'column',
-        gap: 5
+        gap: 5,
     },
     information:{
         color: 'black',
@@ -60,19 +59,22 @@ const news = StyleSheet.create({
         padding: 10,
         alignItems: 'center',
         borderColor: 'gray',
+        borderTopWidth: 0.5,
+        margin: 5,
+        borderRadius: 3,
 
-        borderWidth: 0.5,
-        margin: 5
+
     },
     informationText: {
         color: 'black',
         padding: 10,
-        textAlign: 'justify'
+        textAlign: 'justify',
+
     },
     informationTitle: {
         fontWeight: 700,
         fontSize: 20,
-        color: '#5B5858',
+        color: 'white',
         textAlign: 'justify',
         width: '100%'
     }

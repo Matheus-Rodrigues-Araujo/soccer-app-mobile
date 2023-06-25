@@ -36,18 +36,17 @@ export default function App() {
 
 const styles = StyleSheet.create({
     navigator: {
-        drawerStyle:{backgroundColor: 'white'},
+        drawerStyle:{backgroundColor: 'black'},
         headerStyle:{
             borderBottomWidth: 0,
-            backgroundColor: 'white',
+            backgroundColor: 'black',
             borderBottomColor: 'red',
 
         },
-        headerTintColor: '#EE2C2D',
-        drawerTintColor: '#EE2C2D',
-        drawerActiveTintColor: '#044694',
-        drawerInactiveTintColor: 'black',
-
+        headerTintColor: 'white',
+        drawerTintColor: 'yellow',
+        drawerActiveTintColor: 'white',
+        drawerInactiveTintColor: 'white',
     }
 })
 
