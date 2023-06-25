@@ -5,9 +5,51 @@ import LeagueCard from '../components/LeagueCard'
 
 const LeaguesScreen = () =>{
     const [leagues, setLeagues] = useState([])
+    // const [value, setValue] = useState("")
+    // const [filteredArray, setFilteredArray] = useState(array1);
+    const [searchValue, setSearchValue] = useState('');
+   
+    
+   
+    //   const array1 = [
+    //     { name: 'John Doe', age: 25 },
+    //     { name: 'Jane Smith', age: 30 },
+    //     { name: 'Mark Johnson', age: 35 },
+    //     { name: 'Sara Anderson', age: 28 },
+    //   ];
+    
+    
+      const handleSearch = (text) => {
+        setSearchValue(text);
+        const filteredData = leagues?.response.filter((item) =>
+          item.name.toLowerCase().includes(text.toLowerCase())
+        );
+        setLeagues(filteredData);
+      };
+    
+  
+    };
+    
+
+    function searchLeagues(){
+        if(leagues && leagues.response){
+            const matches = leagues.response.filter(item => {
+                item.name.includes('E')
+            }
+            )
+    
+            setLeagues(matches.response)
+        }
+        
+    }
+
+    useEffect(()=>{
+        searchLeagues()
+    }, [])
+    // function search(arr, str){arr.filter(item => {for(let name in item){if(item.name.includes(str)){return console.log(item)}}return false})}
 
 
-   const getLeagues = async () =>{
+    const getLeagues = async (newData=null) =>{
 
         const options = {
             method: 'GET',
@@ -20,7 +62,8 @@ const LeaguesScreen = () =>{
 
         try {
             const response = await axios.request(options);
-            setLeagues(response.data);
+            const {data} = response
+            setLeagues(data)
         } catch (error) {
             console.error(error);
         }
@@ -29,6 +72,22 @@ const LeaguesScreen = () =>{
     useEffect(()=>{
         getLeagues()
     },[])
+
+    // function Render (){
+    //     const {response} = leagues[0]
+    //     return(
+    //         <View style={{padding: 10}} >
+    //         {
+    //         response && response.map(
+    //             (e, index)=>(<LeagueCard
+    //                 key={index}
+    //                 name={e.league.name}
+    //                 logo={e.league.logo}
+    //             />))
+    //         }
+    //         </View>
+    //     )
+    // }
 
 
     if(leagues.response){
@@ -41,17 +100,16 @@ const LeaguesScreen = () =>{
                   maxLength={30}
                   placeholder='Search...'
                   style={leagueScreenStyle.input}
+                  value={'E'}
+                  onChangeText = {searchLeagues}
+                  
                 />
                  <View style={{padding: 10}} >
                     {leagues.response && leagues.response.map(
                         (e, index)=>(<LeagueCard
                             key={index}
-                            /*id={e.league.id}*/
                             name={e.league.name}
                             logo={e.league.logo}
-                            /*country={e.country.name}
-                            code={e.country.code}
-                            flag={e.country.flag}*/
                         />))}
                 </View>
             </ScrollView>
