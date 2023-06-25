@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     backgroundColor: '#0B0B0B',
-    borderColor: '#044694'
+    borderColor: '#044694',
   },
   navbar:{
     padding:10,

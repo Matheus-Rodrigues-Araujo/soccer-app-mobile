@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
@@ -19,9 +19,10 @@ export default function App() {
          options={{
             headerTitle: () => (
                 <View  style={{display: 'flex', width: '100%',flexDirection: 'row', alignItems: 'center'}} >
-                    {/*<Image style={{width: 40, height: 40, marginLeft: '52%'}} source={require("./soccer-ball-logo.png")} />*/}
+                  <StatusBar barStyle="light-content" backgroundColor="black" />
 
-                    {/*<Text style={{color: '#7ED959', fontSize: 21}} >APP__V1.0</Text>*/}
+                    {/* <Image style={{width: 40, height: 40, marginLeft: '52%'}} source={require("./soccer-ball-logo.png")} /> */}
+
                 </View>
             )
          }}
@@ -36,18 +37,19 @@ export default function App() {
 
 const styles = StyleSheet.create({
     navigator: {
-        drawerStyle:{backgroundColor: 'black'},
+        drawerStyle:{
+          backgroundColor: 'black'
+        },
         headerStyle:{
             borderBottomWidth: 0,
             backgroundColor: 'black',
             borderBottomColor: 'red',
-
+            
         },
         headerTintColor: 'white',
         drawerTintColor: 'yellow',
         drawerActiveTintColor: 'white',
         drawerInactiveTintColor: 'white',
+
     }
 })
-
-{/*backgroundColor: '#044694', */}
