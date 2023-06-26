@@ -7,6 +7,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeScreen from './screens/HomeScreen';
 import LeaguesScreen from './screens/LeaguesScreen';
 import PlayersScreen from './screens/PlayersScreen';
+import TeamsScreen from './screens/TeamsScreen'
 import MatchesScreen from './screens/MatchesScreen';
 
 const Drawer = createDrawerNavigator()
@@ -26,6 +27,7 @@ export default function App() {
          />
         <Drawer.Screen name="Leagues" component={LeaguesScreen} />
         <Drawer.Screen name="Players" component={PlayersScreen} />
+        <Drawer.Screen name="Teams" component={TeamsScreen} />
         <Drawer.Screen name="Matches" component={MatchesScreen} />
       </Drawer.Navigator>
     </NavigationContainer>

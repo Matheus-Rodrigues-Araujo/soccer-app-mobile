@@ -16,10 +16,6 @@ const LeaguesScreen = () =>{
         );
         setLeagues(filteredData);
       };
-    
-  
-    // function search(arr, str){arr.filter(item => {for(let name in item){if(item.name.includes(str)){return console.log(item)}}return false})}
-
 
     const getLeagues = async () =>{
 
@@ -50,9 +46,9 @@ const LeaguesScreen = () =>{
     if(leagues){
         return(
             <ScrollView style={{backgroundColor: '#0B0B0B'}} >
-                <Text style={{color: 'white', fontSize: 25, textAlign: 'center'}} >Find your favorite Leagues</Text>
+                {/* <Text style={{color: 'white', fontSize: 25, textAlign: 'center'}} >Find your favorite Leagues</Text>
                 <Text style={{color: 'gray', fontSize: 20, textAlign: 'center'}} >Choose a league to explore!</Text>
-                
+                 */}
                 <InputField inputValue={searchValue}  searchInput={handleSearch} />
                  <View style={{padding: 10}} >
                     {
@@ -69,28 +65,5 @@ const LeaguesScreen = () =>{
          )
     }
 }
-
-const leagueScreenStyle = StyleSheet.create({
-    input: {
-        height: 40,
-        marginHorizontal: 30,
-        borderWidth: 3,
-        padding: 10,
-        borderRadius:3,
-        backgroundColor: 'white',
-        textDecorationLine:'none'
-      },
-      container: {
-            flex: 1,
-            justifyContent: 'center',
-      },
-      horizontal: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        padding: 10,
-     },
-})
-
-
 
 export default LeaguesScreen;
