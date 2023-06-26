@@ -1,7 +1,8 @@
-import { View, Text, ScrollView, TextInput, StyleSheet } from "react-native";
+import { View, Text, ScrollView, TextInput, StyleSheet, ActivityIndicator } from "react-native";
 import { useEffect, useState } from "react"
 import axios from 'axios';
 import LeagueCard from '../components/LeagueCard'
+import InputField from '../components/InputField'
 
 const LeaguesScreen = () =>{
     const [leagues, setLeagues] = useState([])
@@ -52,16 +53,7 @@ const LeaguesScreen = () =>{
                 <Text style={{color: 'white', fontSize: 25, textAlign: 'center'}} >Find your favorite Leagues</Text>
                 <Text style={{color: 'gray', fontSize: 20, textAlign: 'center'}} >Choose a league to explore!</Text>
                 
-                <TextInput
-                  editable
-                  maxLength={30}
-                  placeholder='Search...'
-                  style={leagueScreenStyle.input}
-                  value={searchValue}
-                  onChangeText={handleSearch}
-                  
-                  
-                />
+                <InputField inputValue={searchValue}  searchInput={handleSearch} />
                  <View style={{padding: 10}} >
                     {
                     leagues && leagues.map(
@@ -76,8 +68,6 @@ const LeaguesScreen = () =>{
             </ScrollView>
          )
     }
-
-
 }
 
 const leagueScreenStyle = StyleSheet.create({
@@ -90,6 +80,15 @@ const leagueScreenStyle = StyleSheet.create({
         backgroundColor: 'white',
         textDecorationLine:'none'
       },
+      container: {
+            flex: 1,
+            justifyContent: 'center',
+      },
+      horizontal: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        padding: 10,
+     },
 })
 
 
