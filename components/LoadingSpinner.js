@@ -11,7 +11,7 @@ export default function LoadingSpinner(){
 
 const styles = StyleSheet.create({
       container: {
-            backgroundColor: 'black',
+            // backgroundColor: '',
             flex: 1,
             justifyContent: 'center',
       },

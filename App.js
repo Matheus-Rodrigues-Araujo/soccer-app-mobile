@@ -1,7 +1,11 @@
 import * as React from 'react';
+import { useContext } from 'react';
 import { Text, View, StyleSheet, Image, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import MyContext from './features/MyContext'
+
+
 
 // Screens
 import HomeScreen from './screens/HomeScreen';
@@ -12,8 +16,12 @@ import MatchesScreen from './screens/MatchesScreen';
 
 const Drawer = createDrawerNavigator()
 
+
 export default function App() {
+  const contextValue = {}
+  
   return (
+    <MyContext.Provider value={contextValue} >
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home" screenOptions={styles.navigator}>
         <Drawer.Screen name="Home" component={HomeScreen}
@@ -31,6 +39,7 @@ export default function App() {
         <Drawer.Screen name="Matches" component={MatchesScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
+    </MyContext.Provider>
   );
 }
 

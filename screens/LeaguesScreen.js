@@ -1,13 +1,14 @@
 import { View, Text, ScrollView, TextInput, StyleSheet, ActivityIndicator } from "react-native";
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import axios from 'axios';
 import LeagueCard from '../components/LeagueCard'
 import InputField from '../components/InputField'
+import MyContext from "../features/MyContext";
 
 const LeaguesScreen = () =>{
     const [leagues, setLeagues] = useState([])
     const [searchValue, setSearchValue] = useState('');
-
+    const contextValue = useContext(MyContext)
     
       const handleSearch = (text) => {
         setSearchValue(text);
@@ -49,7 +50,7 @@ const LeaguesScreen = () =>{
                 {/* <Text style={{color: 'white', fontSize: 25, textAlign: 'center'}} >Find your favorite Leagues</Text>
                 <Text style={{color: 'gray', fontSize: 20, textAlign: 'center'}} >Choose a league to explore!</Text>
                  */}
-                <InputField inputValue={searchValue}  searchInput={handleSearch} />
+                <InputField inputValue={searchValue}  searchInput={handleSearch} placeholder={'Search...'}/>
                  <View style={{padding: 10}} >
                     {
                     leagues && leagues.map(

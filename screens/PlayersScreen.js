@@ -1,17 +1,76 @@
-import { View, Text } from "react-native";
-import { useState } from "react";
+import { View, Text, Button, Pressable } from "react-native";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
+
+import LoadingSpinner from "../components/LoadingSpinner";
 import InputField from "../components/InputField";
-// import axios from 'axios'
-// import LoadingSpinner from "../components/LoadingSpinner";
+import MyContext from "../features/MyContext";
 
 export default function PlayersScreen(){
-    const [searchPlayer, setSearchPlayer] = useState('')
+    const [id, setId] = useState()
+    const [season, setSeason] = useState()
+    const [player, setPlayer] = useState()
 
-    let handleSearch;
+    let loading = false
+
+    const searchPlayer = async () =>{
+        loading = true
+
+        const options = {
+        method: 'GET',
+        url: 'https://api-football-v1.p.rapidapi.com/v3/players',
+        params: {
+            id: 12,
+            season: 2021
+        },
+        headers: {
+            'X-RapidAPI-Key': 'a44ca3f124mshf5256df877ee8a2p16ed0djsn312ab59cbb57',
+            'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+        }
+        };
+
+        try {
+            const result = await axios.request(options);
+            const {response} = result.data
+            setPlayer(response)
+        
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    // const handleSearch = (text) => {
+    //     setSearchValue(text);
+    //     const filteredData = leagues.filter((item) =>
+    //       item.league['name'].toLowerCase().includes(text.toLowerCase())
+    //     );
+    //     setLeagues(filteredData);
+    //   };
+
+    useEffect(()=>{
+        searchPlayer()
+    }, [])
 
     return(
-        <View style={{backgroundColor: 'black'}} >
-            <InputField inputValue={searchPlayer} searchInput={handleSearchPlayer} />
+        <View  >
+            <View style={{marginBottom:10}} >
+                <View >
+                    <InputField inputValue={id} searchInput={()=> setId(id)} placeholder={'Id'}/>
+                </View>
+
+                <View>
+                    <InputField inputValue={season} searchInput={()=> setSeason(season)} placeholder={'Season'}/>
+                </View>
+
+                {/* <Pressable style={{backgroundColor:'#00BF63', color: 'white', marginHorizontal:30}} onPress={searchPlayer} >
+                    <Text style={{color: 'white', fontWeight:700, fontSize:20, textAlign: 'center'}} >Search</Text>
+                </Pressable> */}
+                <Button title='press me' onPress={()=>searchPlayer()} />
+            </View>
+
+            {
+                player?.['0']?.player && <Text style={{color: 'black'}} >{player['0'].player.name}</Text>
+            }
         </View>
     )
 }

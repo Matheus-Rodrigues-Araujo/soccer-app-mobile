@@ -5,13 +5,19 @@ import InputField from "../components/InputField";
 
 export default function TeamsScreen(){
     const [searchTeams, setSearchTeams] = useState('')
-    let handleSearch;
-
+    
+    const handleSearch = (text) => {
+        setSearchValue(text);
+        const filteredData = leagues.filter((item) =>
+          item.league['name'].toLowerCase().includes(text.toLowerCase())
+        );
+        setLeagues(filteredData);
+      };
 
     
     return(
         <View style={{backgroundColor: 'black'}} >
-            <InputField inputValue={searchPlayer} searchInput={setSearchPlayer} />
+            <InputField inputValue={searchTeams} searchInput={handleSearch} />
         </View>
     )
     
