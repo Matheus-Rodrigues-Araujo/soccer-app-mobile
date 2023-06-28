@@ -17,7 +17,7 @@ export default function TeamsScreen(){
     
     return(
         <View style={{backgroundColor: 'black'}} >
-            <InputField inputValue={searchTeams} searchInput={handleSearch} />
+            <InputField value={searchTeams} handleChange={handleSearch} />
         </View>
     )
     

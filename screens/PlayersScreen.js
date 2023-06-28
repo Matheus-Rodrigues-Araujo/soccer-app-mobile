@@ -1,4 +1,4 @@
-import { View, Text, Button, Pressable } from "react-native";
+import { View, Text, Button, Pressable, Image, ScrollView } from "react-native";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 
@@ -7,21 +7,20 @@ import InputField from "../components/InputField";
 import MyContext from "../features/MyContext";
 
 export default function PlayersScreen(){
-    const [id, setId] = useState()
-    const [season, setSeason] = useState()
-    const [player, setPlayer] = useState()
+    const [player, setPlayer] = useState({id: null, season: null})
+    const [data, setData] = useState()
 
     let loading = false
 
-    const searchPlayer = async () =>{
+    const searchPlayer = async (id, season) =>{
         loading = true
 
         const options = {
         method: 'GET',
         url: 'https://api-football-v1.p.rapidapi.com/v3/players',
         params: {
-            id: 12,
-            season: 2021
+            id: Number(id),
+            season: Number(season)
         },
         headers: {
             'X-RapidAPI-Key': 'a44ca3f124mshf5256df877ee8a2p16ed0djsn312ab59cbb57',
@@ -32,45 +31,53 @@ export default function PlayersScreen(){
         try {
             const result = await axios.request(options);
             const {response} = result.data
-            setPlayer(response)
+            setData(response)
         
         } catch (error) {
             console.error(error);
         }
     }
 
-    // const handleSearch = (text) => {
-    //     setSearchValue(text);
-    //     const filteredData = leagues.filter((item) =>
-    //       item.league['name'].toLowerCase().includes(text.toLowerCase())
-    //     );
-    //     setLeagues(filteredData);
-    //   };
+    const handleInputChange = (name, value) => {
+        setPlayer({
+            ...player,
+            [name]: value
+        })
 
-    useEffect(()=>{
-        searchPlayer()
-    }, [])
+       
+    };
+
+
 
     return(
-        <View  >
-            <View style={{marginBottom:10}} >
+        <View stylw={{flex: 1}}>
+            <View >
                 <View >
-                    <InputField inputValue={id} searchInput={()=> setId(id)} placeholder={'Id'}/>
+                    <InputField value={player?.id} handleChange={(value) => handleInputChange('id', value)} placeholder={'Id'}/>
                 </View>
 
                 <View>
-                    <InputField inputValue={season} searchInput={()=> setSeason(season)} placeholder={'Season'}/>
+                    <InputField value={player?.season} handleChange={(value)=> handleInputChange('season', value)} placeholder={'Season'}/>
                 </View>
 
                 {/* <Pressable style={{backgroundColor:'#00BF63', color: 'white', marginHorizontal:30}} onPress={searchPlayer} >
                     <Text style={{color: 'white', fontWeight:700, fontSize:20, textAlign: 'center'}} >Search</Text>
                 </Pressable> */}
-                <Button title='press me' onPress={()=>searchPlayer()} />
+                <Button title='press me' onPress={()=>searchPlayer(player.id, player.season)} />
             </View>
 
+        
             {
-                player?.['0']?.player && <Text style={{color: 'black'}} >{player['0'].player.name}</Text>
-            }
+                data && (
+                <View style={{display:'flex', justifyContent:'center', flexDirection: 'column', alignItems: 'center', backgroundColor: 'black'}} >
+                    
+                    <Text style={{color: 'white', fontSize: 40, textAlign: 'center'}} >{data?.['0'].player.name + ' ' + data?.['0'].player.lastname}</Text>
+                    {data?.['0'].player.photo && <Image style={{width:'50%', height:'50%', objectFit: 'contain'}} source={{uri: data?.['0'].player.photo }} />}
+                    <Text style={{color: 'white'}} >Age: {data?.['0'].player.age}</Text>
+                    <Text style={{color: 'white'}} >Nationality: {data?.['0'].player.nationality}</Text>
+                </View>
+                
+                )} 
         </View>
     )
 }

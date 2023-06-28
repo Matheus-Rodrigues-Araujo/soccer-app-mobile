@@ -50,7 +50,7 @@ const LeaguesScreen = () =>{
                 {/* <Text style={{color: 'white', fontSize: 25, textAlign: 'center'}} >Find your favorite Leagues</Text>
                 <Text style={{color: 'gray', fontSize: 20, textAlign: 'center'}} >Choose a league to explore!</Text>
                  */}
-                <InputField inputValue={searchValue}  searchInput={handleSearch} placeholder={'Search...'}/>
+                <InputField value={searchValue} handleChange={handleSearch} placeholder={'Search...'}/>
                  <View style={{padding: 10}} >
                     {
                     leagues && leagues.map(

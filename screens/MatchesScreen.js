@@ -17,7 +17,7 @@ export default function MatchesScreen(){
     
     return(
         <View style={{flex:1,backgroundColor: 'black'}} >
-            <InputField inputValue={searchMatchs} searchInput={handleSearch} />
+            <InputField value={searchMatchs} handleChange={handleSearch} placeholder={'Matches'} />
             <View style={{flex:1, backgroundColor: 'gray'}} >
                 <LoadingSpinner />
             </View>

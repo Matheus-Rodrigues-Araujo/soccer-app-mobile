@@ -1,14 +1,14 @@
 import { StyleSheet, TextInput } from "react-native"
 
-export default function InputField({inputValue, searchInput, placeholder}){
+export default function InputField({value, handleChange, placeholder}){
   return (
     <TextInput
       editable
       maxLength={30}
       placeholder={placeholder}
       style={styles.input}
-      value={inputValue}
-      onChangeText={searchInput}
+      value={value}
+      onChangeText={handleChange}
     />
 )}
 
